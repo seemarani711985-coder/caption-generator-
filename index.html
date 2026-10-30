@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Caption & Bio Generator for Creators</title>
+    <!-- Tailwind CSS CDN for Modern Design -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between">
+
+    <!-- Header Section -->
+    <header class="bg-slate-900 border-b border-slate-800 p-4 text-center">
+        <h1 class="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
+            🚀 AI Caption & Hashtag Generator
+        </h1>
+        <p class="text-xs text-slate-400 mt-1">For Instagram Reels & YouTube Shorts Creators</p>
+    </header>
+
+    <!-- Top Google Ad Banner Space (AdSense ke liye) -->
+    <div class="max-w-xl mx-auto w-full px-4 mt-4">
+        <div class="bg-slate-900 border border-dashed border-slate-700 rounded-lg p-3 text-center text-xs text-slate-500">
+            [ Google Ad Banner Space ]
+        </div>
+    </div>
+
+    <!-- Main Generator Container -->
+    <main class="max-w-xl mx-auto w-full p-4 flex-grow">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl">
+            
+            <!-- Topic Input -->
+            <div class="mb-4">
+                <label class="block text-sm font-medium mb-2 text-slate-300">Apna Topic ya Idea Likhein:</label>
+                <input type="text" id="topicInput" placeholder="Jaise: Gym workout motivation, Travel vlog..." 
+                    class="w-full bg-slate-950 border border-slate-750 rounded-xl p-3 text-sm focus:outline-none focus:border-purple-500 text-white placeholder-slate-500">
+            </div>
+
+            <!-- Platform Selector -->
+            <div class="mb-4">
+                <label class="block text-sm font-medium mb-2 text-slate-300">Platform Chunein:</label>
+                <select id="platformSelect" class="w-full bg-slate-950 border border-slate-750 rounded-xl p-3 text-sm focus:outline-none focus:border-purple-500 text-white">
+                    <option value="instagram">Instagram Reel Caption</option>
+                    <option value="youtube">YouTube Shorts Title & Tags</option>
+                </select>
+            </div>
+
+            <!-- Generate Button -->
+            <button onclick="generateCaption()" class="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-90 text-white font-medium py-3 rounded-xl transition duration-200 text-sm shadow-lg shadow-purple-900/40">
+                ✨ Generate Caption
+            </button>
+
+            <!-- Output Box -->
+            <div id="outputContainer" class="mt-6 hidden">
+                <label class="block text-sm font-medium mb-2 text-purple-400">Aapka AI Caption Tayar Hai:</label>
+                <div class="relative bg-slate-950 border border-slate-800 rounded-xl p-4 text-sm text-slate-200 whitespace-pre-line" id="resultText">
+                </div>
+                <!-- Copy Button -->
+                <button onclick="copyCaption()" class="mt-3 bg-slate-800 hover:bg-slate-700 text-xs text-purple-300 font-medium py-2 px-4 rounded-lg transition border border-slate-700">
+                    📋 Copy to Clipboard
+                </button>
+            </div>
+        </div>
+
+        <!-- Affiliate Recommendation Box (Affiliate Links ke liye) -->
+        <div class="mt-6 bg-gradient-to-r from-slate-900 to-purple-950 border border-purple-900/50 rounded-2xl p-4 text-center">
+            <h3 class="text-sm font-semibold text-purple-300 mb-1">💡 Creator Tools Recommendation</h3>
+            <p class="text-xs text-slate-400 mb-3">Apni video quality sudharne ke liye yeh best affordable mics aur ring lights check karein:</p>
+            <!-- Yahan aap apna Amazon Affiliate link laga sakte hain -->
+            <a href="#" target="_blank" class="inline-block bg-purple-600 hover:bg-purple-500 text-white text-xs font-medium py-2 px-4 rounded-lg transition">
+                Check Best Ring Light & Mic (Affiliate)
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 p-4 text-center text-xs text-slate-500">
+        <p>&copy; 2026 AI Caption Generator. Made with ❤️ for Creators.</p>
+    </footer>
+
+    <!-- JavaScript for Caption Generation Logic -->
+    <script>
+        function generateCaption() {
+            const topic = document.getElementById('topicInput').value.trim();
+            const platform = document.getElementById('platformSelect').value;
+            const outputContainer = document.getElementById('outputContainer');
+            const resultText = document.getElementById('resultText');
+
+            if (!topic) {
+                alert('Pehle koi topic ya idea toh likhiye!');
+                return;
+            }
+
+            // Sample generated content logic (Aap ise baad me API se bhi connect kar sakte hain)
+            let generated = "";
+            if (platform === 'instagram') {
+                generated = `🔥 ${topic} par focus karo aur duniya ko chhoro! 💪✨\n\nConsistency hi sab kuch hai. Har din thoda behtar bano.\n\n👇 Aapka is baare mein kya kehna hai? Comments mein batao!\n\n#${topic.replace(/\s+/g, '')} #ReelsIndia #Motivation #CreatorLife #GrowFast`;
+            } else {
+                generated = `🚀 Secret to Master ${topic} in 30 Seconds! 🤯\n\nLike and Subscribe for more daily tips!\n\nTags: #${topic.replace(/\s+/g, '')} #Shorts #ViralTips #Hindi`;
+            }
+
+            resultText.innerText = generated;
+            outputContainer.classList.remove('hidden');
+        }
+
+        function copyCaption() {
+            const textToCopy = document.getElementById('resultText').innerText;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                alert('Caption successfully copied!');
+            });
+        }
+    </script>
+</body>
+</html>
